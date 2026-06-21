@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234A0E2B'/><text x='16' y='14' text-anchor='middle' font-family='Georgia,serif' font-size='6' fill='%23C4A882'>AUX</text><text x='16' y='22' text-anchor='middle' font-family='Georgia,serif' font-weight='700' font-size='9' fill='%23FBF7F2'>Vins</text><text x='16' y='30' text-anchor='middle' font-family='Georgia,serif' font-size='6' fill='%23C4A882'>Vivants</text></svg>">
+<title>Aux Vins Vivants – Caviste Bio Paris</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bordeaux:#4A0E2B;
+  --burgundy:#722F37;
+  --rose-vin:#C4637A;
+  --cream:#FBF7F2;
+  --sand:#C4A882;
+  --rose-pale:#F0E0D6;
+  --sage:#4A7C59;
+  --brown:#2C1810;
+  --muted:#7A6A5A;
+  --border:#E8DDD4;
+}
+body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--brown);overflow-x:hidden;scroll-behavior:smooth}
+
+/* NAV */
+nav{display:flex;justify-content:space-between;align-items:center;padding:1rem 2.5rem;background:rgba(251,247,242,0.97);position:sticky;top:0;z-index:100;backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.logo-nav{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo-icon-nav{width:36px;height:36px}
+.logo-txt .vins{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:600;color:var(--bordeaux);display:block;line-height:1.1}
+.logo-txt .sub{font-size:0.62rem;color:var(--sand);letter-spacing:0.12em;text-transform:uppercase;display:block}
+.nav-links{display:flex;gap:0;list-style:none}
+.nav-links a{text-decoration:none;color:var(--muted);font-size:0.8rem;font-weight:400;padding:0.4rem 0.8rem;border-radius:4px;transition:all 0.2s;white-space:nowrap}
+.nav-links a:hover{color:var(--bordeaux);background:var(--rose-pale)}
+.nav-right{display:flex;align-items:center;gap:0.8rem}
+.nav-tel{background:var(--bordeaux);color:var(--cream);padding:0.5rem 1rem;border-radius:4px;font-size:0.78rem;font-weight:500;text-decoration:none;transition:opacity 0.2s;white-space:nowrap}
+.nav-tel:hover{opacity:0.9}
+
+/* HERO - sans image pour éviter le bug */
+.hero{background:linear-gradient(135deg,var(--bordeaux) 0%,var(--burgundy) 60%,#8B3A4A 100%);color:var(--cream);padding:6rem 2.5rem 5rem;position:relative;overflow:hidden}
+.hero-deco{position:absolute;inset:0;pointer-events:none}
+.hero-deco-circle{position:absolute;border-radius:50%;opacity:0.06}
+.hero-deco-c1{width:500px;height:500px;background:var(--cream);top:-200px;right:-150px}
+.hero-deco-c2{width:300px;height:300px;background:var(--sand);bottom:-100px;left:-80px}
+.hero-inner{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:1.2fr 0.8fr;gap:4rem;align-items:center;position:relative;z-index:1}
+.hero-eyebrow{font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--sand);margin-bottom:1.5rem;animation:fadeUp 0.5s ease both}
+.hero h1{font-family:'Playfair Display',serif;font-size:3.8rem;font-weight:400;line-height:1.05;margin-bottom:1rem;animation:fadeUp 0.6s 0.1s ease both}
+.hero h1 em{color:var(--sand);font-style:italic}
+.hero-tagline{font-size:0.72rem;letter-spacing:0.22em;text-transform:uppercase;color:rgba(251,247,242,0.4);margin-bottom:1.5rem;animation:fadeUp 0.6s 0.15s ease both}
+.hero-desc{font-size:0.95rem;color:rgba(251,247,242,0.65);line-height:1.9;margin-bottom:2.5rem;animation:fadeUp 0.6s 0.2s ease both;font-weight:300}
+.hero-btns{display:flex;gap:0.8rem;flex-wrap:wrap;animation:fadeUp 0.6s 0.3s ease both}
+.btn-cream{background:var(--cream);color:var(--bordeaux);padding:0.85rem 1.8rem;border-radius:3px;font-weight:600;text-decoration:none;font-size:0.88rem;transition:transform 0.2s,box-shadow 0.2s;display:inline-block}
+.btn-cream:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,0.25)}
+.btn-sand-outline{border:1px solid rgba(196,168,130,0.5);color:var(--sand);padding:0.85rem 1.8rem;border-radius:3px;font-weight:400;text-decoration:none;font-size:0.88rem;transition:all 0.2s;display:inline-block}
+.btn-sand-outline:hover{border-color:var(--sand);background:rgba(196,168,130,0.08)}
+.hero-right{display:flex;flex-direction:column;gap:0.8rem;animation:fadeIn 0.8s 0.4s ease both}
+.hero-stat{background:rgba(251,247,242,0.06);border:1px solid rgba(251,247,242,0.1);border-radius:8px;padding:1.2rem 1.5rem;transition:border-color 0.2s}
+.hero-stat:hover{border-color:rgba(196,168,130,0.3)}
+.hero-stat-num{font-family:'Playfair Display',serif;font-size:2rem;font-weight:600;color:var(--sand)}
+.hero-stat-label{font-size:0.72rem;color:rgba(251,247,242,0.4);letter-spacing:0.08em;text-transform:uppercase;margin-top:2px}
+.hero-contact-btns{display:flex;flex-direction:column;gap:0.6rem;margin-top:0.4rem}
+.hero-contact-btn{display:flex;align-items:center;justify-content:center;gap:0.6rem;padding:0.8rem;border-radius:6px;text-decoration:none;font-size:0.82rem;font-weight:500;transition:all 0.2s}
+.btn-call{background:rgba(196,168,130,0.15);border:1px solid rgba(196,168,130,0.3);color:var(--sand)}
+.btn-call:hover{background:rgba(196,168,130,0.25)}
+.btn-mail{background:rgba(251,247,242,0.06);border:1px solid rgba(251,247,242,0.1);color:rgba(251,247,242,0.6)}
+.btn-mail:hover{background:rgba(251,247,242,0.1)}
+
+/* CONCEPT BAND */
+.concept-band{background:var(--rose-pale);padding:1.2rem 2.5rem;display:flex;align-items:center;justify-content:center;gap:2.5rem;flex-wrap:wrap;border-bottom:1px solid var(--border)}
+.concept-pill{display:flex;align-items:center;gap:0.5rem;font-size:0.78rem;color:var(--bordeaux);font-weight:400}
+.concept-pill::before{content:'';width:5px;height:5px;background:var(--sand);border-radius:50%;display:block}
+
+/* SECTIONS COMMUNES */
+.section-label{font-size:0.68rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--sand);margin-bottom:0.8rem}
+.wine-line{width:32px;height:1.5px;background:var(--sand);margin:0.7rem auto 2.5rem;border-radius:2px}
+
+/* CONCEPT */
+.concept-section{padding:6rem 2.5rem;max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.concept-section h2{font-family:'Playfair Display',serif;font-size:2.6rem;font-weight:400;line-height:1.2;color:var(--bordeaux);margin-bottom:1.5rem}
+.concept-section h2 em{font-style:italic;color:var(--burgundy)}
+.concept-section p{font-size:0.92rem;color:var(--muted);line-height:2;margin-bottom:1rem;font-weight:300}
+.concept-section p strong{color:var(--brown);font-weight:500}
+.concept-img-wrap{display:flex;flex-direction:column;gap:1rem}
+.concept-img{width:100%;border-radius:4px;object-fit:cover}
+.concept-img-tall{height:350px}
+.concept-img-short{height:200px}
+.img-ph{border-radius:4px;background:var(--rose-pale)}
+
+/* STATS */
+.stats-section{background:var(--bordeaux);padding:4.5rem 2.5rem}
+.stats-inner{max-width:900px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;text-align:center}
+.stat-item{padding:1rem;border-right:1px solid rgba(251,247,242,0.07)}
+.stat-item:last-child{border-right:none}
+.stat-big{font-family:'Playfair Display',serif;font-size:2.8rem;font-weight:400;color:var(--sand);line-height:1}
+.stat-txt{font-size:0.72rem;color:rgba(251,247,242,0.4);letter-spacing:0.1em;text-transform:uppercase;margin-top:0.5rem}
+
+/* SÉLECTION */
+.selection-section{padding:6rem 2.5rem;background:var(--cream)}
+.selection-inner{max-width:1100px;margin:0 auto}
+.section-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3rem}
+.selection-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:1rem}
+.sel-card{background:#fff;border:1px solid var(--border);border-radius:6px;padding:1.5rem;text-align:center;transition:all 0.3s}
+.sel-card:hover{border-color:var(--bordeaux);transform:translateY(-3px);box-shadow:0 10px 28px rgba(74,14,43,0.08)}
+.sel-icon{font-size:1.8rem;margin-bottom:0.7rem;display:block;transition:transform 0.3s}
+.sel-card:hover .sel-icon{transform:scale(1.12)}
+.sel-card h3{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:400;color:var(--bordeaux);margin-bottom:0.3rem}
+.sel-card p{font-size:0.73rem;color:var(--muted);line-height:1.5}
+
+/* SERVICES */
+.services-section{background:var(--rose-pale);padding:5rem 2.5rem}
+.services-inner{max-width:1100px;margin:0 auto}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(175px,1fr));gap:1rem;margin-top:2.5rem}
+.srv-card{background:rgba(255,255,255,0.7);border:1px solid rgba(255,255,255,0.9);border-radius:6px;padding:1.3rem;transition:all 0.3s}
+.srv-card:hover{background:white;border-color:var(--sand);transform:translateY(-2px)}
+.srv-icon{font-size:1.3rem;margin-bottom:0.6rem}
+.srv-card h4{font-size:0.85rem;font-weight:500;color:var(--bordeaux);margin-bottom:0.2rem}
+.srv-card p{font-size:0.73rem;color:var(--muted);line-height:1.5}
+
+/* RÉSEAUX SOCIAUX */
+.social-section{background:var(--bordeaux);padding:5rem 2.5rem;text-align:center}
+.social-inner{max-width:700px;margin:0 auto}
+.social-badge{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(196,168,130,0.15);border:1px solid rgba(196,168,130,0.3);padding:0.35rem 1rem;border-radius:20px;font-size:0.7rem;color:var(--sand);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:1.5rem}
+.social-badge::before{content:'';width:6px;height:6px;background:#4CAF50;border-radius:50%;display:block}
+.social-section h2{font-family:'Playfair Display',serif;font-size:2.5rem;font-weight:400;color:var(--cream);margin-bottom:1rem}
+.social-section h2 em{color:var(--sand);font-style:italic}
+.social-section p{color:rgba(251,247,242,0.55);font-size:0.92rem;line-height:1.8;margin-bottom:3rem;font-weight:300}
+.social-buttons{display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap}
+.social-big-btn{display:flex;flex-direction:column;align-items:center;gap:0.6rem;background:rgba(251,247,242,0.06);border:1px solid rgba(251,247,242,0.12);border-radius:12px;padding:2rem 2.5rem;text-decoration:none;transition:all 0.3s;min-width:180px}
+.social-big-btn:hover{background:rgba(251,247,242,0.1);border-color:var(--sand);transform:translateY(-3px)}
+.social-big-btn .soc-icon{font-size:2.5rem}
+.social-big-btn .soc-name{font-weight:600;color:var(--cream);font-size:0.95rem}
+.social-big-btn .soc-handle{font-size:0.75rem;color:var(--sand);letter-spacing:0.05em}
+.social-big-btn .soc-desc{font-size:0.72rem;color:rgba(251,247,242,0.35);margin-top:0.3rem}
+
+/* AVIS */
+.avis-section{background:var(--cream);padding:6rem 2.5rem}
+.avis-inner{max-width:1100px;margin:0 auto}
+.avis-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.avis-card{border:1px solid var(--border);border-radius:8px;padding:2rem;background:#fff;transition:all 0.3s}
+.avis-card:hover{border-color:var(--bordeaux);transform:translateY(-2px);box-shadow:0 10px 24px rgba(74,14,43,0.08)}
+.avis-stars{color:var(--sand);font-size:0.85rem;letter-spacing:3px;margin-bottom:1.2rem}
+.avis-card blockquote{font-family:'Playfair Display',serif;font-size:0.92rem;font-style:italic;color:var(--muted);line-height:1.8;margin-bottom:1.5rem}
+.avis-author{font-size:0.75rem;font-weight:600;color:var(--bordeaux);letter-spacing:0.05em}
+
+/* ADRESSES */
+.adresses-section{background:var(--rose-pale);padding:6rem 2.5rem}
+.adresses-inner{max-width:1100px;margin:0 auto}
+.adresses-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2.5rem}
+.addr-card{border:1px solid var(--border);border-radius:8px;padding:2rem;background:#fff;transition:all 0.3s}
+.addr-card:hover{border-color:var(--bordeaux);box-shadow:0 8px 24px rgba(74,14,43,0.08)}
+.addr-num{font-size:0.65rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:var(--sand);margin-bottom:0.8rem}
+.addr-card h3{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:400;color:var(--bordeaux);margin-bottom:0.5rem}
+.addr-card address{font-style:normal;font-size:0.82rem;color:var(--muted);line-height:1.7;margin-bottom:0.8rem}
+.addr-btns{display:flex;flex-direction:column;gap:0.5rem;margin-bottom:1.2rem}
+.addr-btn{display:flex;align-items:center;gap:0.5rem;padding:0.6rem 0.9rem;border-radius:5px;text-decoration:none;font-size:0.78rem;font-weight:500;transition:all 0.2s}
+.addr-btn-tel{background:var(--bordeaux);color:var(--cream)}
+.addr-btn-tel:hover{opacity:0.9}
+.addr-btn-mail{border:1px solid var(--border);color:var(--muted)}
+.addr-btn-mail:hover{border-color:var(--bordeaux);color:var(--bordeaux)}
+.addr-hours{border-top:1px solid var(--border);padding-top:1rem}
+.addr-hours h4{font-size:0.65rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:0.6rem}
+.hour-row{display:flex;justify-content:space-between;font-size:0.75rem;color:var(--muted);padding:0.18rem 0;border-bottom:1px solid rgba(0,0,0,0.03)}
+.hour-row .day{font-weight:500;color:var(--brown)}
+.ferme{color:#C4A882;opacity:0.6}
+
+/* HISTOIRE */
+.histoire-section{background:var(--bordeaux);padding:6rem 2.5rem}
+.histoire-inner{max-width:800px;margin:0 auto;text-align:center}
+.histoire-inner h2{font-family:'Playfair Display',serif;font-size:2.8rem;font-weight:400;color:var(--cream);margin-bottom:2rem}
+.histoire-inner blockquote{font-family:'Playfair Display',serif;font-size:1.2rem;font-style:italic;color:var(--sand);line-height:1.9;margin-bottom:2rem}
+.histoire-inner p{font-size:0.92rem;color:rgba(251,247,242,0.55);line-height:2;font-weight:300;max-width:650px;margin:0 auto}
+
+/* CONTACT */
+.contact-section{background:var(--cream);padding:6rem 2.5rem;text-align:center}
+.contact-inner{max-width:600px;margin:0 auto}
+.contact-inner h2{font-family:'Playfair Display',serif;font-size:2.5rem;font-weight:400;color:var(--bordeaux);margin-bottom:1rem}
+.contact-inner h2 em{color:var(--burgundy);font-style:italic}
+.contact-inner p{color:var(--muted);margin-bottom:2rem;font-size:0.9rem;line-height:1.8;font-weight:300}
+.contact-btns{display:flex;flex-direction:column;gap:0.8rem;max-width:320px;margin:0 auto}
+.contact-btn{display:flex;align-items:center;justify-content:center;gap:0.6rem;padding:1rem;border-radius:5px;text-decoration:none;font-size:0.88rem;font-weight:500;transition:all 0.2s}
+.contact-btn-bordeaux{background:var(--bordeaux);color:var(--cream)}
+.contact-btn-bordeaux:hover{opacity:0.9;transform:translateY(-1px)}
+.contact-btn-border{border:1px solid var(--border);color:var(--muted)}
+.contact-btn-border:hover{border-color:var(--bordeaux);color:var(--bordeaux)}
+
+footer{background:var(--bordeaux);color:rgba(251,247,242,0.2);padding:2rem 2.5rem;font-size:0.75rem}
+.footer-inner{max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+footer span{color:var(--sand)}
+.footer-links{display:flex;gap:1.5rem}
+.footer-links a{color:rgba(251,247,242,0.3);text-decoration:none;font-size:0.72rem}
+.footer-links a:hover{color:var(--sand)}
+
+.reveal{opacity:0;transform:translateY(20px);transition:opacity 0.7s ease,transform 0.7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@media(max-width:768px){
+  .hero-inner{grid-template-columns:1fr}
+  .hero h1{font-size:2.5rem}
+  .concept-section{grid-template-columns:1fr}
+  .stats-inner{grid-template-columns:1fr 1fr}
+  .avis-grid,.adresses-grid{grid-template-columns:1fr}
+  .nav-links{display:none}
+  nav{padding:1rem}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="logo-nav" href="#">
+    <svg class="logo-icon-nav" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="36" height="36" rx="8" fill="#4A0E2B"/>
+      <text x="18" y="12" text-anchor="middle" font-family="Georgia,serif" font-size="5.5" fill="#C4A882" letter-spacing="1">AUX</text>
+      <text x="18" y="21" text-anchor="middle" font-family="Georgia,serif" font-weight="700" font-size="9" fill="#FBF7F2">Vins</text>
+      <text x="18" y="29" text-anchor="middle" font-family="Georgia,serif" font-size="6" fill="#C4A882">Vivants</text>
+    </svg>
+    <div class="logo-txt">
+      <span class="vins">Aux Vins Vivants</span>
+      <span class="sub">Bios · Beaux · Bons</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#concept">Le concept</a></li>
+    <li><a href="#selection">Sélection</a></li>
+    <li><a href="#social">Réseaux</a></li>
+    <li><a href="#avis">Avis</a></li>
+    <li><a href="#adresses">Nos caves</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="tel:0183927348" class="nav-tel">📞 Appeler</a>
+</nav>
+
+<div class="hero">
+  <div class="hero-deco">
+    <div class="hero-deco-circle hero-deco-c1"></div>
+    <div class="hero-deco-circle hero-deco-c2"></div>
+  </div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-eyebrow">Caviste engagé · 3 caves à Paris</div>
+      <h1>Des vins <em>vivants,</em><br>libres &<br>sincères</h1>
+      <div class="hero-tagline">Bios · Beaux · Bons</div>
+      <p class="hero-desc">Plus de 1200 références de vins bio, biodynamiques et natures. Des flacons révélateurs de leur terroir, dénichés par Arthur et toute l'équipe depuis plus de 10 ans.</p>
+      <div class="hero-btns">
+        <a href="#adresses" class="btn-cream">Nos 3 caves</a>
+        <a href="#selection" class="btn-sand-outline">Notre sélection</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-stat">
+        <div class="hero-stat-num">+1200</div>
+        <div class="hero-stat-label">Références bio & natures</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">5★</div>
+        <div class="hero-stat-label">Note client moyenne</div>
+      </div>
+      <div class="hero-contact-btns">
+        <a href="tel:0183927348" class="hero-contact-btn btn-call">📞 01 83 92 73 48 — Rue de Lévis</a>
+        <a href="tel:0148244246" class="hero-contact-btn btn-call">📞 01 48 24 42 46 — Rue Richer</a>
+        <a href="tel:0183890469" class="hero-contact-btn btn-call">📞 01 83 89 04 69 — Beaugrenelle</a>
+        <a href="mailto:beaugrenelle@vinsvivants.fr" class="hero-contact-btn btn-mail">✉️ beaugrenelle@vinsvivants.fr</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="concept-band">
+  <div class="concept-pill">Vins bio & biodynamiques</div>
+  <div class="concept-pill">Vignerons engagés</div>
+  <div class="concept-pill">Sans intrants chimiques</div>
+  <div class="concept-pill">3 caves à Paris</div>
+  <div class="concept-pill">Livraison à domicile</div>
+</div>
+
+<div class="concept-section reveal" id="concept">
+  <div>
+    <div class="section-label">Notre histoire</div>
+    <h2>C'est avant tout<br>une <em>histoire</em><br>de rencontres.</h2>
+    <p>Après avoir sillonné les vignobles pionniers en Biodynamie et lancé son propre restaurant et cave à vins naturels, <strong>Arthur Petillault</strong> imagine un modèle de caves basé sur la mise en avant d'une <strong>viticulture respectueuse de l'environnement et de l'humain.</strong></p>
+    <p>Des vins ouverts, <strong>libres et non contraints par la chimie.</strong> Des vins sincères créés par des artisan·nes vigneron·nes engagé·es, pour qui le respect de la nature est LE principe fondamental.</p>
+    <p>Plus de 10 ans à arpenter le vignoble, pour vous proposer des flacons révélateurs de leur terroir, du travail de l'humain derrière le vin, et d'une <strong>agriculture vertueuse et durable.</strong></p>
+  </div>
+  <div class="concept-img-wrap">
+    <img class="concept-img concept-img-tall" src="ddd1.jpg" alt="Bouteilles" onerror="this.style.cssText='height:350px;border-radius:4px;background:var(--rose-pale);display:block'"/>
+    <img class="concept-img concept-img-short" src="ddd.jpg" alt="Cave" onerror="this.style.cssText='height:200px;border-radius:4px;background:var(--border);display:block'"/>
+  </div>
+</div>
+
+<div class="stats-section">
+  <div class="stats-inner reveal">
+    <div class="stat-item"><div class="stat-big">+1200</div><div class="stat-txt">Références</div></div>
+    <div class="stat-item"><div class="stat-big">3</div><div class="stat-txt">Caves Paris</div></div>
+    <div class="stat-item"><div class="stat-big">10+</div><div class="stat-txt">Ans d'expertise</div></div>
+    <div class="stat-item"><div class="stat-big">5★</div><div class="stat-txt">Avis clients</div></div>
+  </div>
+</div>
+
+<div class="selection-section reveal" id="selection">
+  <div class="selection-inner">
+    <div class="section-header">
+      <div>
+        <div class="section-label">Ce qu'on propose</div>
+        <h2 style="font-family:'Playfair Display',serif;font-size:2.3rem;font-weight:400;color:var(--bordeaux)">Notre sélection</h2>
+      </div>
+      <p style="font-size:0.82rem;color:var(--muted);text-align:right;line-height:1.7;max-width:260px">Champagnes, spiritueux, bières artisanales et épiceries fines — tout rigoureusement sélectionné</p>
+    </div>
+    <div class="selection-grid">
+      <div class="sel-card"><span class="sel-icon">🍷</span><h3>Vins naturels</h3><p>Bio, biodynamiques et natures de tous les terroirs</p></div>
+      <div class="sel-card"><span class="sel-icon">🥂</span><h3>Champagnes</h3><p>Vignerons indépendants, méthode naturelle</p></div>
+      <div class="sel-card"><span class="sel-icon">🍺</span><h3>Bières artisanales</h3><p>Bières bio et brasseries françaises</p></div>
+      <div class="sel-card"><span class="sel-icon">🥃</span><h3>Spiritueux</h3><p>Whisky, gin, rhum, cognac et eaux de vie</p></div>
+      <div class="sel-card"><span class="sel-icon">🍶</span><h3>Cidres</h3><p>Cidres, poirés et boissons fermentées naturelles</p></div>
+      <div class="sel-card"><span class="sel-icon">🧺</span><h3>Épicerie fine</h3><p>Produits d'exception pour accompagner vos vins</p></div>
+    </div>
+  </div>
+</div>
+
+<div class="services-section reveal">
+  <div class="services-inner">
+    <div class="section-label">Nos services</div>
+    <h2 style="font-family:'Playfair Display',serif;font-size:2.3rem;font-weight:400;color:var(--bordeaux);margin-bottom:0.3rem">Plus qu'un simple caviste</h2>
+    <p style="color:var(--muted);font-size:0.88rem">Des services pensés pour amateurs et professionnels</p>
+    <div class="services-grid">
+      <div class="srv-card"><div class="srv-icon">🚚</div><h4>Livraison à domicile</h4><p>Commandez en ligne, recevez chez vous</p></div>
+      <div class="srv-card"><div class="srv-icon">🏪</div><h4>Retrait en cave</h4><p>Dans nos 3 caves parisiennes</p></div>
+      <div class="srv-card"><div class="srv-icon">📦</div><h4>Expédition</h4><p>Partout en France</p></div>
+      <div class="srv-card"><div class="srv-icon">🎁</div><h4>Cadeaux d'entreprise</h4><p>Coffrets personnalisés pour vos clients</p></div>
+      <div class="srv-card"><div class="srv-icon">🍾</div><h4>Dégustations</h4><p>Soirées avec nos vignerons dans nos caves</p></div>
+      <div class="srv-card"><div class="srv-icon">📚</div><h4>Cours d'œnologie</h4><p>Apprenez à déguster avec nos experts</p></div>
+    </div>
+  </div>
+</div>
+
+<div class="social-section reveal" id="social">
+  <div class="social-inner">
+    <div class="social-badge">Actifs chaque semaine</div>
+    <h2>Suivez-nous sur<br>nos <em>réseaux</em></h2>
+    <p>Nouveautés, arrivages, dégustations, coups de cœur vignerons — on partage notre passion chaque semaine sur Instagram et Facebook. Rejoignez notre communauté de passionnés !</p>
+    <div class="social-buttons">
+      <a href="https://www.instagram.com/aux_vins_vivants/" target="_blank" class="social-big-btn">
+        <span class="soc-icon">📷</span>
+        <span class="soc-name">Instagram</span>
+        <span class="soc-handle">@aux_vins_vivants</span>
+        <span class="soc-desc">Nouveautés & arrivages</span>
+      </a>
+      <a href="https://www.facebook.com/auxvinsvivants" target="_blank" class="social-big-btn">
+        <span class="soc-icon">👥</span>
+        <span class="soc-name">Facebook</span>
+        <span class="soc-handle">Aux Vins Vivants</span>
+        <span class="soc-desc">Événements & dégustations</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="avis-section reveal" id="avis">
+  <div class="avis-inner">
+    <div class="section-label" style="text-align:center">Témoignages</div>
+    <h2 style="font-family:'Playfair Display',serif;font-size:2.3rem;font-weight:400;color:var(--bordeaux);text-align:center;margin-bottom:0.4rem">Ils nous font confiance</h2>
+    <p style="color:var(--muted);font-size:0.85rem;text-align:center;margin-bottom:2.5rem">Note de 5 étoiles dans nos 3 caves parisiennes</p>
+    <div class="avis-grid">
+      <div class="avis-card">
+        <div class="avis-stars">★★★★★</div>
+        <blockquote>"Une très belle sélection, soigneusement choisie, avec des pépites pour tous les budgets. Les conseils sont toujours justes et personnalisés, on sent la passion et la vraie connaissance des produits."</blockquote>
+        <div class="avis-author">— Antoine M.</div>
+      </div>
+      <div class="avis-card">
+        <div class="avis-stars">★★★★★</div>
+        <blockquote>"Un accueil toujours chaleureux et souriant, des conseils avisés et une belle et large sélection de qualité. À conseiller sans modération."</blockquote>
+        <div class="avis-author">— Sébastien S.</div>
+      </div>
+      <div class="avis-card">
+        <div class="avis-stars">★★★★★</div>
+        <blockquote>"AVV a su rapidement se faire une réputation avec une belle offre en vins natures et un renouvellement régulier. Je conseille sans modération."</blockquote>
+        <div class="avis-author">— Boris M.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="adresses-section reveal" id="adresses">
+  <div class="adresses-inner">
+    <div class="section-label">Nous rendre visite</div>
+    <h2 style="font-family:'Playfair Display',serif;font-size:2.3rem;font-weight:400;color:var(--bordeaux);margin-bottom:0.3rem">Nos 3 caves à Paris</h2>
+    <p style="color:var(--muted);font-size:0.85rem">Paris 17ème, 9ème et 15ème — venez nous rendre visite !</p>
+    <div class="adresses-grid">
+      <div class="addr-card">
+        <div class="addr-num">Cave 01 · Paris 17ème</div>
+        <h3>Rue de Lévis</h3>
+        <address>77 Rue de Lévis, 75017 Paris</address>
+        <div class="addr-btns">
+          <a href="tel:0183927348" class="addr-btn addr-btn-tel">📞 01 83 92 73 48</a>
+        </div>
+        <div class="addr-hours">
+          <h4>Horaires</h4>
+          <div class="hour-row"><span class="day">Lundi</span><span class="ferme">Fermé</span></div>
+          <div class="hour-row"><span class="day">Mar–Jeu</span><span>16h–20h30</span></div>
+          <div class="hour-row"><span class="day">Vendredi</span><span>13h–20h30</span></div>
+          <div class="hour-row"><span class="day">Samedi</span><span>10h–20h30</span></div>
+          <div class="hour-row"><span class="day">Dimanche</span><span>10h–13h</span></div>
+        </div>
+      </div>
+      <div class="addr-card">
+        <div class="addr-num">Cave 02 · Paris 9ème</div>
+        <h3>Rue Richer</h3>
+        <address>41 Rue Richer, 75009 Paris</address>
+        <div class="addr-btns">
+          <a href="tel:0148244246" class="addr-btn addr-btn-tel">📞 01 48 24 42 46</a>
+        </div>
+        <div class="addr-hours">
+          <h4>Horaires</h4>
+          <div class="hour-row"><span class="day">Lundi–Mar</span><span>17h–21h</span></div>
+          <div class="hour-row"><span class="day">Mer–Jeu</span><span>12h–21h</span></div>
+          <div class="hour-row"><span class="day">Vendredi</span><span>12h–22h</span></div>
+          <div class="hour-row"><span class="day">Samedi</span><span>12h–21h</span></div>
+          <div class="hour-row"><span class="day">Dimanche</span><span class="ferme">Fermé</span></div>
+        </div>
+      </div>
+      <div class="addr-card">
+        <div class="addr-num">Cave 03 · Paris 15ème</div>
+        <h3>Beaugrenelle</h3>
+        <address>9 Rue Beaugrenelle, 75015 Paris</address>
+        <div class="addr-btns">
+          <a href="tel:0183890469" class="addr-btn addr-btn-tel">📞 01 83 89 04 69</a>
+          <a href="mailto:beaugrenelle@vinsvivants.fr" class="addr-btn addr-btn-mail">✉️ beaugrenelle@vinsvivants.fr</a>
+        </div>
+        <div class="addr-hours">
+          <h4>Horaires</h4>
+          <div class="hour-row"><span class="day">Lundi</span><span class="ferme">Fermé</span></div>
+          <div class="hour-row"><span class="day">Mar–Ven</span><span>13h30–20h</span></div>
+          <div class="hour-row"><span class="day">Samedi</span><span>11h–20h</span></div>
+          <div class="hour-row"><span class="day">Dimanche</span><span class="ferme">Fermé</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="histoire-section reveal">
+  <div class="histoire-inner">
+    <div class="section-label" style="color:var(--sand)">Notre philosophie</div>
+    <h2>Des vins vivants</h2>
+    <blockquote>"Des vins ouverts, libres et non contraints par la chimie. Des vins sincères créés par des artisan·nes vigneron·nes engagé·es pour qui le respect de la nature est LE principe fondamental."</blockquote>
+    <p>Chez Aux Vins Vivants, les Pointures du nature côtoient de nouveaux talents, dénichés par Arthur et l'ensemble de l'équipe. Chaque flacon raconte une histoire — celle d'un terroir, d'un vigneron, d'une philosophie de vie.</p>
+  </div>
+</div>
+
+<div class="contact-section reveal" id="contact">
+  <div class="contact-inner">
+    <div class="section-label">Nous contacter</div>
+    <h2>Une question ?<br><em>On répond.</em></h2>
+    <p>Pour toute demande de commande, cadeau d'entreprise, dégustation ou simplement pour parler de vins — notre équipe est là.</p>
+    <div class="contact-btns">
+      <a href="tel:0183927348" class="contact-btn contact-btn-bordeaux">📞 01 83 92 73 48 — Rue de Lévis</a>
+      <a href="tel:0148244246" class="contact-btn contact-btn-bordeaux">📞 01 48 24 42 46 — Rue Richer</a>
+      <a href="tel:0183890469" class="contact-btn contact-btn-bordeaux">📞 01 83 89 04 69 — Beaugrenelle</a>
+      <a href="mailto:beaugrenelle@vinsvivants.fr" class="contact-btn contact-btn-border">✉️ beaugrenelle@vinsvivants.fr</a>
+      <a href="https://www.instagram.com/aux_vins_vivants/" target="_blank" class="contact-btn contact-btn-border">📷 Instagram @aux_vins_vivants</a>
+      <a href="https://www.facebook.com/auxvinsvivants" target="_blank" class="contact-btn contact-btn-border">👥 Facebook</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <span>Aux Vins Vivants — Bios · Beaux · Bons</span>
+    <div class="footer-links">
+      <a href="#concept">Le concept</a>
+      <a href="#adresses">Nos caves</a>
+      <a href="#social">Réseaux</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <span style="color:rgba(251,247,242,0.2);font-size:0.7rem">© 2024 Aux Vins Vivants</span>
+  </div>
+</footer>
+
+<script>
+const obs=new IntersectionObserver((entries)=>{
+  entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),i*80)}});
+},{threshold:0.08});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
